@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Tavern Shop</title>
+</head>
+
+<body id="page-home">
+
+<h1>Tavern Shop</h1>
+
+<a href="#" id="hero-cta">Vai allo shop</a>
+
+<h2>Prodotti</h2>
+
+<div class="product-card" data-product="dadi" data-price="20">
+  <p>Dadi fantasy</p>
+  <button class="btn-buy">Compra</button>
+</div>
+
+<div class="product-card" data-product="miniatura" data-price="35">
+  <p>Miniatura drago</p>
+  <button class="btn-buy">Compra</button>
+</div>
+
+<h2>Newsletter</h2>
+
+<form id="newsletter-form">
+  <input type="email" required>
+  <button type="submit">Iscriviti</button>
+</form>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+document.querySelectorAll('.btn-buy').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const card = btn.closest('.product-card');
+
+    dataLayer.push({
+      event: "add_to_cart",
+      product: card.dataset.product,
+      price: card.dataset.price
+    });
+
+    alert("Aggiunto");
+  });
+});
+
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  dataLayer.push({
+    event: "newsletter_signup"
+  });
+
+  alert("Iscritto");
+});
+</script>
+
+</body>
+</html>
