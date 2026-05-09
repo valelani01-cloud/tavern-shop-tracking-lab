@@ -10,63 +10,190 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NZ383VBV');</script>
 <!-- End Google Tag Manager -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, serif;
+      background: #1a1209;
+      color: #e8d5a3;
+      min-height: 100vh;
+    }
+    nav {
+      background: #0d0a05;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid #3a2a10;
+    }
+    nav a { color: #a07840; text-decoration: none; font-size: 14px; letter-spacing: 0.05em; }
+    nav a:hover { color: #e8d5a3; }
+    nav .logo { color: #e8d5a3; font-size: 18px; font-weight: bold; margin-right: auto; }
+    .hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      border-bottom: 1px solid #3a2a10;
+    }
+    .hero h1 { font-size: 48px; color: #f0d060; margin-bottom: 16px; }
+    .hero p { color: #a07840; font-size: 16px; margin-bottom: 32px; }
+    .btn-hero {
+      display: inline-block;
+      background: #a07840;
+      color: #1a1209;
+      padding: 14px 32px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    .btn-hero:hover { background: #f0d060; }
+    .products {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+    .products h2 { font-size: 24px; color: #f0d060; margin-bottom: 32px; }
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .product-card {
+      background: #2a1f0d;
+      border: 1px solid #3a2a10;
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+    .product-card .icon { font-size: 48px; margin-bottom: 12px; }
+    .product-card h3 { font-size: 18px; color: #e8d5a3; margin-bottom: 8px; }
+    .product-card .price { color: #a07840; margin-bottom: 16px; font-size: 15px; }
+    .btn-buy {
+      background: #a07840;
+      color: #1a1209;
+      border: none;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-family: Georgia, serif;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.2s;
+      display: block;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    .btn-buy:hover { background: #f0d060; }
+    .btn-detail {
+      display: block;
+      color: #a07840;
+      text-decoration: none;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    .btn-detail:hover { color: #e8d5a3; }
+    .newsletter {
+      max-width: 500px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .newsletter h2 { font-size: 24px; color: #f0d060; margin-bottom: 16px; }
+    .newsletter p { color: #a07840; margin-bottom: 24px; font-size: 15px; }
+    .newsletter form { display: flex; gap: 12px; }
+    .newsletter input {
+      flex: 1;
+      background: #2a1f0d;
+      border: 1px solid #3a2a10;
+      border-radius: 4px;
+      padding: 12px 16px;
+      color: #e8d5a3;
+      font-family: Georgia, serif;
+      font-size: 15px;
+      outline: none;
+    }
+    .newsletter input:focus { border-color: #a07840; }
+    .newsletter button {
+      background: #a07840;
+      color: #1a1209;
+      border: none;
+      padding: 12px 24px;
+      font-family: Georgia, serif;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .newsletter button:hover { background: #f0d060; }
+  </style>
 </head>
-
 <body id="page-home">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZ383VBV"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<h1>Tavern Shop</h1>
 
-<a href="#" id="hero-cta">Vai allo shop</a>
+<nav>
+  <span class="logo">⚔️ Tavern Shop</span>
+  <a href="index.html">Home</a>
+  <a href="product.html">Prodotti</a>
+  <a href="cart.html">Carrello</a>
+  <a href="contact.html">Contatti</a>
+</nav>
 
-<h2>Prodotti</h2>
-
-<div class="product-card" data-product="dadi" data-price="20">
-  <p>Dadi fantasy</p>
-  <button class="btn-buy">Compra</button>
+<div class="hero">
+  <h1>Tavern Shop</h1>
+  <p>Accessori fantasy per avventurieri</p>
+  <a href="product.html" id="hero-cta">Vai allo shop</a>
 </div>
 
-<div class="product-card" data-product="miniatura" data-price="35">
-  <p>Miniatura drago</p>
-  <button class="btn-buy">Compra</button>
+<div class="products">
+  <h2>Prodotti</h2>
+  <div class="product-grid">
+    <div class="product-card" data-product="dadi" data-price="20">
+      <div class="icon">🎲</div>
+      <h3>Dadi Fantasy</h3>
+      <div class="price">€20,00</div>
+      <button class="btn-buy">Compra</button>
+      <a href="product.html" class="btn-detail">Vedi dettaglio →</a>
+    </div>
+    <div class="product-card" data-product="miniatura" data-price="35">
+      <div class="icon">🐉</div>
+      <h3>Miniatura Drago</h3>
+      <div class="price">€35,00</div>
+      <button class="btn-buy">Compra</button>
+      <a href="cart.html" class="btn-detail">Vedi dettaglio →</a>
+    </div>
+  </div>
 </div>
 
-<h2>Newsletter</h2>
-
-<form id="newsletter-form">
-  <input type="email" required>
-  <button type="submit">Iscriviti</button>
-</form>
+<div class="newsletter">
+  <h2>Newsletter</h2>
+  <p>Ricevi offerte esclusive per avventurieri</p>
+  <form id="newsletter-form">
+    <input type="email" placeholder="la@tua.email" required>
+    <button type="submit">Iscriviti</button>
+  </form>
+</div>
 
 <script>
 window.dataLayer = window.dataLayer || [];
-
 document.querySelectorAll('.btn-buy').forEach(btn => {
   btn.addEventListener('click', function() {
     const card = btn.closest('.product-card');
-
     dataLayer.push({
       event: "add_to_cart",
       product: card.dataset.product,
       price: card.dataset.price
     });
-
-    alert("Aggiunto");
+    alert("Aggiunto al carrello!");
   });
 });
-
 document.getElementById('newsletter-form').addEventListener('submit', function(e) {
   e.preventDefault();
-
   dataLayer.push({
     event: "newsletter_signup"
   });
-
-  alert("Iscritto");
+  alert("Iscritto!");
 });
 </script>
-
 </body>
 </html>
