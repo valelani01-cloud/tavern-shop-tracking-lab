@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrello – Tavern Shop</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NZ383VBV');</script>
+  <!-- End Google Tag Manager -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, serif;
+      background: #1a1209;
+      color: #e8d5a3;
+      min-height: 100vh;
+    }
+    nav {
+      background: #0d0a05;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid #3a2a10;
+    }
+    nav a { color: #a07840; text-decoration: none; font-size: 14px; letter-spacing: 0.05em; }
+    nav a:hover { color: #e8d5a3; }
+    nav .logo { color: #e8d5a3; font-size: 18px; font-weight: bold; margin-right: auto; }
+    .container { max-width: 700px; margin: 60px auto; padding: 0 24px; }
+    h1 { font-size: 28px; color: #f0d060; margin-bottom: 32px; }
+    .cart-item {
+      background: #2a1f0d;
+      border: 1px solid #3a2a10;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+    .cart-item .icon { font-size: 40px; }
+    .cart-item .info { flex: 1; }
+    .cart-item .info h3 { font-size: 18px; color: #e8d5a3; margin-bottom: 4px; }
+    .cart-item .info p { font-size: 14px; color: #a07840; }
+    .cart-item .price { font-size: 20px; color: #f0d060; font-weight: bold; }
+    .summary {
+      background: #0d0a05;
+      border: 1px solid #3a2a10;
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 32px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: #c4a96e;
+    }
+    .summary-row.total {
+      font-size: 20px;
+      color: #f0d060;
+      font-weight: bold;
+      border-top: 1px solid #3a2a10;
+      padding-top: 16px;
+      margin-top: 8px;
+    }
+    .btn-checkout {
+      background: #a07840;
+      color: #1a1209;
+      border: none;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-family: Georgia, serif;
+      cursor: pointer;
+      border-radius: 4px;
+      width: 100%;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+      margin-top: 20px;
+    }
+    .btn-checkout:hover { background: #f0d060; }
+    .confirm-msg {
+      display: none;
+      margin-top: 16px;
+      padding: 12px;
+      background: #2a3a1a;
+      border: 1px solid #4a6a2a;
+      border-radius: 4px;
+      color: #8aba5a;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZ383VBV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <span class="logo">⚔️ Tavern Shop</span>
+  <a href="index.html">Home</a>
+  <a href="cart.html">Carrello</a>
+  <a href="contact.html">Contatti</a>
+</nav>
+
+<div class="container">
+  <h1>🛒 Il tuo Carrello</h1>
+
+  <div class="cart-item">
+    <div class="icon">🎲</div>
+    <div class="info">
+      <h3>Dadi Fantasy</h3>
+      <p>Quantità: 1</p>
+    </div>
+    <div class="price">€20,00</div>
+  </div>
+
+  <div class="cart-item">
+    <div class="icon">🐉</div>
+    <div class="info">
+      <h3>Miniatura Drago</h3>
+      <p>Quantità: 1</p>
+    </div>
+    <div class="price">€35,00</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-row"><span>Subtotale</span><span>€55,00</span></div>
+    <div class="summary-row"><span>Spedizione</span><span>Gratuita</span></div>
+    <div class="summary-row total"><span>Totale</span><span>€55,00</span></div>
+    <button class="btn-checkout" id="btn-checkout">Procedi al checkout</button>
+    <div class="confirm-msg" id="confirm-msg">✓ Checkout avviato! Verrai reindirizzato al pagamento.</div>
+  </div>
+</div>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+// Evento view_cart — si attiva al caricamento della pagina carrello
+dataLayer.push({
+  event: 'view_cart',
+  cart_value: '55',
+  items_count: '2',
+  page_type: 'cart'
+});
+
+// Evento begin_checkout — si attiva al clic su "Procedi al checkout"
+document.getElementById('btn-checkout').addEventListener('click', function() {
+  dataLayer.push({
+    event: 'begin_checkout',
+    cart_value: '55',
+    items_count: '2'
+  });
+  document.getElementById('confirm-msg').style.display = 'block';
+});
+</script>
+</body>
+</html>
