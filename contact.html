@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Contatti – Tavern Shop</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NZ383VBV');</script>
+  <!-- End Google Tag Manager -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, serif;
+      background: #1a1209;
+      color: #e8d5a3;
+      min-height: 100vh;
+    }
+    nav {
+      background: #0d0a05;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid #3a2a10;
+    }
+    nav a { color: #a07840; text-decoration: none; font-size: 14px; letter-spacing: 0.05em; }
+    nav a:hover { color: #e8d5a3; }
+    nav .logo { color: #e8d5a3; font-size: 18px; font-weight: bold; margin-right: auto; }
+    .container { max-width: 600px; margin: 60px auto; padding: 0 24px; }
+    h1 { font-size: 28px; color: #f0d060; margin-bottom: 8px; }
+    .subtitle { color: #a07840; font-size: 15px; margin-bottom: 40px; }
+    .form-group { margin-bottom: 24px; }
+    label {
+      display: block;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a07840;
+      margin-bottom: 8px;
+    }
+    input, textarea, select {
+      width: 100%;
+      background: #2a1f0d;
+      border: 1px solid #3a2a10;
+      border-radius: 4px;
+      padding: 12px 16px;
+      color: #e8d5a3;
+      font-family: Georgia, serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: #a07840; }
+    textarea { height: 120px; resize: vertical; }
+    select option { background: #2a1f0d; }
+    .btn-send {
+      background: #a07840;
+      color: #1a1209;
+      border: none;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-family: Georgia, serif;
+      cursor: pointer;
+      border-radius: 4px;
+      width: 100%;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    .btn-send:hover { background: #f0d060; }
+    .confirm-msg {
+      display: none;
+      margin-top: 16px;
+      padding: 16px;
+      background: #2a3a1a;
+      border: 1px solid #4a6a2a;
+      border-radius: 4px;
+      color: #8aba5a;
+      font-size: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZ383VBV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <span class="logo">⚔️ Tavern Shop</span>
+  <a href="index.html">Home</a>
+  <a href="cart.html">Carrello</a>
+  <a href="contact.html">Contatti</a>
+</nav>
+
+<div class="container">
+  <h1>📜 Contattaci</h1>
+  <p class="subtitle">Hai domande sui nostri prodotti? Scrivici!</p>
+
+  <form id="contact-form">
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input type="text" id="name" placeholder="Il tuo nome" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="la@tua.email" required>
+    </div>
+    <div class="form-group">
+      <label for="subject">Argomento</label>
+      <select id="subject">
+        <option value="info">Informazioni prodotto</option>
+        <option value="order">Ordine e spedizione</option>
+        <option value="return">Reso e rimborso</option>
+        <option value="other">Altro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Messaggio</label>
+      <textarea id="message" placeholder="Scrivi qui il tuo messaggio..." required></textarea>
+    </div>
+    <button type="submit" class="btn-send" id="btn-send">Invia messaggio</button>
+    <div class="confirm-msg" id="confirm-msg">✓ Messaggio inviato! Ti risponderemo entro 24 ore.</div>
+  </form>
+</div>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+// Evento view_contact_page — si attiva al caricamento
+dataLayer.push({
+  event: 'view_contact_page',
+  page_type: 'contact'
+});
+
+// Evento form_start — si attiva al primo clic su un campo
+let formStarted = false;
+document.getElementById('contact-form').addEventListener('focusin', function() {
+  if (!formStarted) {
+    formStarted = true;
+    dataLayer.push({
+      event: 'contact_form_start'
+    });
+  }
+});
+
+// Evento contact_form_submit — si attiva all'invio del form
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const subject = document.getElementById('subject').value;
+  dataLayer.push({
+    event: 'contact_form_submit',
+    contact_subject: subject
+  });
+  document.getElementById('confirm-msg').style.display = 'block';
+});
+</script>
+</body>
+</html>
