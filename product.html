@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Dadi Fantasy – Tavern Shop</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NZ383VBV');</script>
+  <!-- End Google Tag Manager -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, serif;
+      background: #1a1209;
+      color: #e8d5a3;
+      min-height: 100vh;
+    }
+    nav {
+      background: #0d0a05;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid #3a2a10;
+    }
+    nav a {
+      color: #a07840;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+    nav a:hover { color: #e8d5a3; }
+    nav .logo { color: #e8d5a3; font-size: 18px; font-weight: bold; margin-right: auto; }
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .product-image {
+      background: #2a1f0d;
+      border: 1px solid #3a2a10;
+      border-radius: 8px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+    .product-info h1 {
+      font-size: 32px;
+      color: #f0d060;
+      margin-bottom: 12px;
+    }
+    .product-info .price {
+      font-size: 28px;
+      color: #a07840;
+      margin-bottom: 20px;
+    }
+    .product-info p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #c4a96e;
+      margin-bottom: 32px;
+    }
+    .btn-add {
+      background: #a07840;
+      color: #1a1209;
+      border: none;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-family: Georgia, serif;
+      cursor: pointer;
+      border-radius: 4px;
+      width: 100%;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    .btn-add:hover { background: #f0d060; }
+    .badge {
+      display: inline-block;
+      background: #3a2a10;
+      color: #a07840;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .confirm-msg {
+      display: none;
+      margin-top: 16px;
+      padding: 12px;
+      background: #2a3a1a;
+      border: 1px solid #4a6a2a;
+      border-radius: 4px;
+      color: #8aba5a;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZ383VBV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <span class="logo">⚔️ Tavern Shop</span>
+  <a href="index.html">Home</a>
+  <a href="cart.html">Carrello</a>
+  <a href="contact.html">Contatti</a>
+</nav>
+
+<div class="container">
+  <div class="product-image">🎲</div>
+  <div class="product-info">
+    <span class="badge">Disponibile</span>
+    <h1>Dadi Fantasy</h1>
+    <div class="price">€20,00</div>
+    <p>Set di dadi artigianali per avventurieri esperti. Ogni dado è forgiato con resina trasparente e include inclusioni di foglia d'oro. Perfetti per campagne di D&D, Pathfinder e qualsiasi GDR fantasy.</p>
+    <button class="btn-add" id="btn-add-cart">Aggiungi al carrello</button>
+    <div class="confirm-msg" id="confirm-msg">✓ Prodotto aggiunto al carrello!</div>
+  </div>
+</div>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+// Evento view_item — si attiva al caricamento della pagina
+dataLayer.push({
+  event: 'view_item',
+  product: 'dadi',
+  price: '20',
+  page_type: 'product_detail'
+});
+
+// Evento add_to_cart — si attiva al clic sul bottone
+document.getElementById('btn-add-cart').addEventListener('click', function() {
+  dataLayer.push({
+    event: 'add_to_cart',
+    product: 'dadi',
+    price: '20'
+  });
+  document.getElementById('confirm-msg').style.display = 'block';
+});
+</script>
+</body>
+</html>
